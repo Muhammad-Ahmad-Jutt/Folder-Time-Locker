@@ -94,13 +94,8 @@ def zipfile(location, s_date, t_date):
             print("error while zipping")
     else:
         print("invalid date")
-def zip_file():
-    location = filedialog.askopenfile()
-    zip_data(location)
-def zip_folder():
-    location = filedialog.askdirectory()
-    zip_data(location)
-def zip_data(location):
+def zip_window():
+    location = filedialog.askopenfilename()
     if location:
         zipwindow = tk.Toplevel(root)
         location_label = tk.Label(zipwindow, text=location, bg='green')
@@ -125,16 +120,15 @@ def unzip_window():
         print("can't find")
 #out main window and its widgets
 root = tk.Tk()
+root.geometry("150x150")
 root.title("Lock folder app")
 # we will create the main buttons
-zip_b = tk.Button(root, text="Zip file ", command=zip_file)
-zip_bf = tk.Button(root, text="Zip Folder", command=zip_folder)
+zip_b = tk.Button(root, text="Zip", command=zip_window)
 unzip_b = tk.Button(root, text="Unzip", command=unzip_window)
 exit_b = tk.Button(root, text="Exit",bg='red', command=root.quit)
-zip_b.pack( padx=10, pady=20)
-zip_bf.pack( padx=10, pady=20)
-unzip_b.pack( padx=10, pady=20)
-exit_b.pack( padx=10, pady=20)
+zip_b.grid(row=0, column=0, padx=10, pady=20)
+unzip_b.grid(row=0, column=1, padx=10, pady=20)
+exit_b.grid(row=1, column=1, padx=10, pady=20)
 
 
 
