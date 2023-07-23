@@ -118,7 +118,9 @@ def zip_data(location):
         cancel_b.pack(padx=10, pady=10)
 def unzip_window():
     password = get_current_date_string()
-    location = filedialog.askopenfilename()
+    location = filedialog.askopenfilename(title="Select a zip file",
+        filetypes=[("Zip Files", "*.zip")]
+    )
     if location:
         unzip_file_with_password(location, password)
     else:
